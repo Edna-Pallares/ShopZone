@@ -1,19 +1,12 @@
-import { useState } from "react";
-import React from "react";
-import Navigations from "./components/Navigation";
-import NavRoutes from "./components/NavRoutes";
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Header from "./components/header/Header";
+import Search from "./components/search/Search";
+import AddProducts from "./components/addproducts/AddProducts";
+import Button from "./components/buttonStyle/Button";
 
-function App() {
-  const [token, setToken] = useState(null);
+const App = () => {
 
-  return (
-    <>
-      <div id="container">
-        <Navigations token={token} setToken={setToken} />
-        <NavRoutes token={token} setToken={setToken} />
-      </div>
-    </>
-  );
-}
+};
 
 export default App;
