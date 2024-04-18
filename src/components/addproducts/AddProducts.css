@@ -1,0 +1,163 @@
+.addproducts__container {
+    height: 100vh;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    display: flex;
+    z-index: 2;
+    animation: fade-in 0.2s;
+  }
+  
+  .animate {
+    animation: fade-out 0.2s;
+  }
+  
+  .side-panel {
+    height: 100vh;
+    background-color: var(--softer-color);
+    padding: 0 1rem;
+  }
+  
+  .left-side {
+    width: 70%;
+  }
+  
+  .right-side {
+    width: 30%;
+    background-color: var(--color-white);
+  }
+  
+  .right-side-header,
+  .right-side-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+  }
+  
+  .right-side-body {
+    padding: 2.5rem 1rem;
+    height: 70vh;
+    overflow: auto;
+  }
+  
+  .total-items {
+    background-color: rgb(145, 14, 168);
+    color: var(--color-white);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .footer-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .bar {
+    height: 1px;
+    background-color: var(--softer-color);
+  }
+  
+  .check-out {
+    text-align: center;
+  }
+  
+  .check-out-btn {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
+    border-radius: 0.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .check-out-btn:hover {
+    background-color: var(--color-white);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+  
+  .check-out-container {
+    display: none;
+  }
+  
+  .check-out-print {
+    width: 100%;
+    height: 100vh;
+    background-color: var(--color-white);
+    margin: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .check-out-title {
+    margin-bottom: 4rem;
+  }
+  
+  table {
+    border: 1px solid;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table tr,
+  th,
+  td {
+    border: 1px solid black;
+    padding: 0.3rem;
+  }
+  
+  table td {
+    color: var(--soft-color);
+  }
+  
+  table tr .table-item-title {
+    width: 20rem;
+  }
+  
+  .total {
+    color: black;
+  }
+  
+  @media screen and (max-width: 1040px) {
+    .left-side,
+    .right-side {
+      width: 50%;
+    }
+  }
+  
+  @media screen and (max-width: 400px) {
+    .left-side {
+      display: none;
+    }
+    .right-side {
+      width: 100%;
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  

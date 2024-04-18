@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import Header from "./components/header/Header";
+import Search from "./components/search/Search";
+import Login from './components/login/Login';
 import AddProducts from "./components/addproducts/AddProducts";
 import Button from "./components/buttonStyle/Button";
 import CardBody from "./components/cards/CardBody";
-import Header from "./components/header/Header";
-import Search from "./components/search/Search";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   const [items, setItem] = useState([]);
@@ -18,9 +20,11 @@ const App = () => {
       .then((data) => setItem(data));
     console.count("hi");
   }, []);
+
   function changingSearchData(e) {
     setSearchValue(e.target.value);
   }
+
   const itemsFilter = items.filter((item) =>
     item.title.toLowerCase().includes(searchValue.toLowerCase())
   );
@@ -35,6 +39,7 @@ const App = () => {
     const newItems = addedItems.filter((addedItem) => addedItem.id !== item.id);
     setAddedItem(newItems);
   }
+
   return (
     <div>
       {/* <Header /> */}
@@ -48,6 +53,7 @@ const App = () => {
               onChangeData={changingSearchData}
             />
             <Button num={addedItems.length} click={setShowAddProducts} />
+            <Login />
           </div>
         </div>
 
@@ -66,6 +72,7 @@ const App = () => {
           addedItems={addedItems}
         />
       </div>
+      <Footer />
     </div>
   );
 };
