@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 import "./Card.css";
 
 const Card = ({ product, addItem, removeItem, addedItems }) => {
+  const [isAdded, setIsAdded] = useState(true);
+  const item = addedItems.filter((addedItem) => addedItem.id == product.id);
   useEffect(() => {
     item.length == 0 ? setIsAdded(true) : setIsAdded(false);
   }, [item]);
