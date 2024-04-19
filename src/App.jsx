@@ -9,6 +9,8 @@ import Search from "./components/search/Search";
 import AddProducts from "./components/addproducts/AddProducts";
 import Button from "./components/buttonStyle/Button";
 import CardBody from "./components/cards/CardBody";
+import SingleProduct from "./components/singleproduct/SingleProduct";
+import SingleCategory from "./components/singlecategory/SingleCategory";
 import Footer from "./components/footer/Footer";
 
 const App = () => {
@@ -53,6 +55,8 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/password" element={<Password />} />
+          <Route path="/singleproduct" element={<SingleProduct />} />
+          <Route path="/singlecategory" element={<SingleCategory />} />
           <Route
             path="/"
             element={
