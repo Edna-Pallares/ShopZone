@@ -1,4 +1,4 @@
-.login-container {
+.login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,7 +16,7 @@
     width: 300px;
   }
   
-  .login-container h1 {
+  .login h1 {
     font-size: 24px;
     margin-bottom: 20px;
   }
@@ -57,8 +57,10 @@
     cursor: not-allowed;
   }
   
-  .error-message {
+  .error-message,
+  .success-message {
     margin-top: 10px;
+    font-size: 14px;
   }
   
   p {

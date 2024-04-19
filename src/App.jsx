@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./components/login/Login";
 import "./App.css";
+import Login from "./components/login/Login";
+import Register from "./components/register/Register";
+import Password from "./components/password/Password";
 import Header from "./components/header/Header";
 import Search from "./components/search/Search";
 import AddProducts from "./components/addproducts/AddProducts";
@@ -49,6 +51,8 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/password" element={<Password />} />
           <Route
             path="/"
             element={

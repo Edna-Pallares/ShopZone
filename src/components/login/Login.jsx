@@ -1,77 +1,70 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = () => {
-  const [username, setUsername] = useState("");
+const Login = ({ setUser, setToken }) => {
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    // Making the API call to authenticate the user
-    fetch("https://fakestoreapi.com/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-      }),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error("Login failed");
-        }
-      })
-      .then((json) => {
-        console.log(json);
-        // Handle successful login, e.g., store token in local storage
-        // Redirect user to dashboard or another page
-      })
-      .catch((error) => {
-        setError("Invalid username or password. Please try again.");
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("https://fakestoreapi.com/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("token", data.token);
+        setEmail(email);
+        setToken(data.token);
+        navigate("/dashboard"); 
+      } else {
+        setError("Invalid email or password. Please try again.");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("An error occurred during login. Please try again later.");
+    }
   };
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
+      <h1>Login</h1>
+      {error && <p className="error-message">{error}</p>}
+      <form onSubmit={handleLogin}>
+        <label>
+          Email:
           <input
             type="text"
-            id="username"
-            value={username}
-            onChange={handleUsernameChange}
-            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
+        </label>
+        <label>
+          Password:
           <input
             type="password"
-            id="password"
             value={password}
-            onChange={handlePasswordChange}
-            required
+            onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        {error && <p className="error-message">{error}</p>}
-        <button type="submit">Login</button>
+        </label>
+        <button type="submit" disabled={!email || !password}>
+          Login
+        </button>
       </form>
+      <p>Forgot password?</p>
+      <button onClick={() => navigate("/Password")}>
+        Reset password
+      </button>
+      <p>Don't have an account yet?</p>
+      <button onClick={() => navigate("/Register")}>Sign Up</button>
     </div>
   );
 };
