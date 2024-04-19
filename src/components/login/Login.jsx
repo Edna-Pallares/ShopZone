@@ -1,59 +1,77 @@
-import React, { useState } from 'react';
-import './Login.css';
+import React, { useState } from "react";
+import "./Login.css";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    // Make API request to login
-    fetch('https://fakestoreapi.com/auth/login', {
-      method: 'POST',
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Making the API call to authenticate the user
+    fetch("https://fakestoreapi.com/auth/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         username: username,
         password: password,
       }),
     })
-      .then(res => res.json())
-      .then(json => {
-        if (json.token) {
-          setLoggedIn(true);
-          alert('Login successful!');
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
         } else {
-          alert('Invalid credentials. Please try again.');
+          throw new Error("Login failed");
         }
       })
-      .catch(error => {
-        console.error('Error logging in:', error);
-        alert('An error occurred while logging in. Please try again.');
+      .then((json) => {
+        console.log(json);
+        // Handle successful login, e.g., store token in local storage
+        // Redirect user to dashboard or another page
+      })
+      .catch((error) => {
+        setError("Invalid username or password. Please try again.");
       });
   };
 
   return (
     <div className="login-container">
       <h2>Login</h2>
-      <form>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            onChange={handleUsernameChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
+        </div>
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit">Login</button>
       </form>
-      {loggedIn && <p>Welcome, {username}!</p>}
     </div>
   );
 };

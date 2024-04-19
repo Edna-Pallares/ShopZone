@@ -2,20 +2,23 @@
   --soft-color: rgba(66, 15, 113, 0.774);
   --softer-color: rgba(0, 0, 0, 0.2);
   --color-primary: rgb(145, 14, 168);
-  --color-waring: green;
+  --color-waring: #d49cf1;
   --color-white: #fff;
-  --color-danger: #cc1996;
+  --color-danger: #900d8e;
 }
-::-webkit-scrollbar {
-  display: none;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
+
 .body__container {
   width: 80%;
   margin: 2rem auto;
-  /* border: 1px solid var(--softer-color); */
   border-radius: 0.5rem;
   padding: 1rem;
 }
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -25,14 +28,29 @@
   margin-bottom: 1rem;
   position: sticky;
   top: 0;
-  background-color: rgb(145, 14, 168);
-  z-index: 2;
+  background-color: rgb(42, 1, 80);
+  z-index: 100;
 }
+
 .nav-right {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
+
+.search__input {
+  width: 300px;
+  padding: 10px 20px;
+  border: 2px solid var(--color-primary);
+  border-radius: 0.5rem;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.search__input:focus {
+  outline: none;
+  border-color: var(--color-primary); /* Match focused state to border color */
+}
+
 @media screen and (max-width: 1040px) {
   .body__container {
     width: 95%;

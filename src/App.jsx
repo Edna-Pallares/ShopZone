@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./components/login/Login";
 import "./App.css";
 import Header from "./components/header/Header";
 import Search from "./components/search/Search";
-import Login from './components/login/Login';
 import AddProducts from "./components/addproducts/AddProducts";
 import Button from "./components/buttonStyle/Button";
 import CardBody from "./components/cards/CardBody";
@@ -17,62 +18,77 @@ const App = () => {
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/")
       .then((res) => res.json())
-      .then((data) => setItem(data));
-    console.count("hi");
+      .then((data) => setItem(data))
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  function changingSearchData(e) {
+  const changingSearchData = (e) => {
     setSearchValue(e.target.value);
-  }
+  };
+
+  const addItem = (item) => {
+    item.addNumber = 1;
+    const updatedItems = [...addedItems, item];
+    setAddedItem(updatedItems);
+  };
+
+  const removeItem = (item) => {
+    const updatedItems = addedItems.filter(
+      (addedItem) => addedItem.id !== item.id
+    );
+    setAddedItem(updatedItems);
+  };
 
   const itemsFilter = items.filter((item) =>
     item.title.toLowerCase().includes(searchValue.toLowerCase())
   );
 
-  function addItem(item) {
-    item.addNumber = 1;
-    const itemArr = addedItems;
-    setAddedItem([...itemArr, item]);
-  }
-  
-  function removeItem(item) {
-    const newItems = addedItems.filter((addedItem) => addedItem.id !== item.id);
-    setAddedItem(newItems);
-  }
-
   return (
     <div>
-      {/* <Header /> */}
-      <div className="body__container">
-        <div className="nav">
-          <Header />
-          <div className="nav-right">
-            <Search
-              products={items}
-              value={searchValue}
-              onChangeData={changingSearchData}
-            />
-            <Button num={addedItems.length} click={setShowAddProducts} />
-            <Login />
-          </div>
-        </div>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <React.Fragment>
+                <div className="body__container">
+                  <div className="nav">
+                    <div className="nav-right">
+                      <Search
+                        products={items}
+                        value={searchValue}
+                        onChangeData={changingSearchData}
+                      />
+                      <Button
+                        num={addedItems.length}
+                        click={setShowAddProducts}
+                      />
+                    </div>
+                  </div>
 
-        {showAddProducts && (
-          <AddProducts
-            click={setShowAddProducts}
-            items={addedItems}
-            removeItem={removeItem}
-            setAddedItem={setAddedItem}
+                  {showAddProducts && (
+                    <AddProducts
+                      click={setShowAddProducts}
+                      items={addedItems}
+                      removeItem={removeItem}
+                      setAddedItem={setAddedItem}
+                    />
+                  )}
+                  <CardBody
+                    products={itemsFilter}
+                    addItem={addItem}
+                    removeItem={removeItem}
+                    addedItems={addedItems}
+                  />
+                </div>
+                <Footer />
+              </React.Fragment>
+            }
           />
-        )}
-        <CardBody
-          products={itemsFilter}
-          addItem={addItem}
-          removeItem={removeItem}
-          addedItems={addedItems}
-        />
-      </div>
-      <Footer />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

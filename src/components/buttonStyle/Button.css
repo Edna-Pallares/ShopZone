@@ -9,7 +9,7 @@
     cursor: pointer;
   }
   .ui-change-btn span {
-    background-color: rgb(81, 192, 244);
+    background-color: #cc1996;
     display: inline-block;
     padding: 0.4rem;
     margin: 0 0.5rem;

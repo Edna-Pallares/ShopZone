@@ -1,11 +1,26 @@
+/* Header container styles */
 header {
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  /* Logo container styles */
+  header__logo-container {
+    display: flex;
     align-items: center;
   }
-  header .header__logo {
+  
+  /* Logo image styles */
+  .header__logo {
     width: 4rem;
-    animation: rotate 5s linear ;
+    animation: rotate 7s linear infinite;
   }
   
   @keyframes rotate {
@@ -15,4 +30,62 @@ header {
     to {
       transform: rotate(360deg);
     }
+  }
+  
+  /* Navigation styles */
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 1rem;
+  }
+  
+  nav ul li a {
+    color: var(--color-white);
+    text-decoration: none;
+  }
+  
+  nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Search bar container styles */
+  .search__input {
+    width: 200px; 
+    padding: 8px;
+    border: 2px solid var(--color-white);
+    border-radius: 4px;
+    margin-left: 1rem;
+    background-color: transparent;
+    color: var(--color-white);
+  }
+  
+  .search__input:focus {
+    outline: none;
+    border-color: var(--color-warning);
+  }
+
+  /* Cart container styles */
+  .cart-container {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+  }
+  
+  /* Cart icon styles */
+  .cart-icon {
+    font-size: 1.5rem;
+    color: var(--color-white);
+    margin-right: 0.5rem;
+  }
+  
+  /* Cart count styles */
+  .cart-count {
+    background-color: var(--color-warning);
+    color: var(--color-white);
+    padding: 4px 8px;
+    border-radius: 50%;
   }
