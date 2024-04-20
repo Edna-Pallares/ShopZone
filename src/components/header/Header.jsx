@@ -1,31 +1,31 @@
 import React from "react";
 import LoGo from "../../assets/logo.png";
-import CartLogo from "../../assets/cart-logo.png";
+import CartIcon from "../../assets/cart.jpg";
 import { Link } from "react-router-dom";
 import "./Header.css";
-import Search from "../search/Search";
 
 const Header = () => {
   return (
-    <header>
-            <div className="header__logo-container">
+    <header className="header">
+      <div className="header__logo-container">
         <img className="header__logo" src={LoGo} alt="Shop Zone Logo" />
-        <h1>Shop Zone</h1>
+        <h1 className="header__title">Shop Zone</h1>
       </div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
+      <nav className="header__nav">
+        <ul className="header__nav-list">
+          <li className="header__nav-item">
+            <Link to="/" className="header__nav-link">Home</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
+          <li className="header__nav-item">
+            <Link to="/login" className="header__nav-link">Login</Link>
           </li>
-          {/* Add other navigation links as needed */}
+          <li className="header__nav-item">
+            <Link to="/register" className="header__nav-link">Sign Up</Link>
+          </li>
         </ul>
       </nav>
-      <div className="cart-container">
-        {/* Replace this with your actual cart icon */}
-        <span className="cart-count">0</span>
+      <div className="header__cart-container">
+        <img src={CartIcon} alt="Cart" className="header__cart-icon" />
       </div>
     </header>
   );

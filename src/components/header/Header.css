@@ -3,7 +3,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     background-color: var(--color-primary);
     color: var(--color-white);
     position: sticky;
@@ -22,6 +22,11 @@ header {
     width: 4rem;
     animation: rotate 7s linear infinite;
   }
+
+  /* Title styles */
+.header__title {
+    margin-left: 0.5rem; /* Add spacing between logo and title */
+  }
   
   @keyframes rotate {
     from {
@@ -33,59 +38,37 @@ header {
   }
   
   /* Navigation styles */
-  nav ul {
+  .header__nav-list {
     list-style-type: none;
     padding: 0;
     display: flex;
   }
   
-  nav ul li {
+  .header__nav-item {
     margin-right: 1rem;
   }
   
-  nav ul li a {
+  .header__nav-link {
     color: var(--color-white);
     text-decoration: none;
   }
   
-  nav ul li a:hover {
+  .header__nav-link:hover {
     text-decoration: underline;
   }
-  
-  /* Search bar container styles */
-  .search__input {
-    width: 200px; 
-    padding: 8px;
-    border: 2px solid var(--color-white);
-    border-radius: 4px;
-    margin-left: 1rem;
-    background-color: transparent;
-    color: var(--color-white);
-  }
-  
-  .search__input:focus {
-    outline: none;
-    border-color: var(--color-warning);
-  }
-
+ 
   /* Cart container styles */
-  .cart-container {
+  .header__cart-container {
     display: flex;
     align-items: center;
     margin-right: 1rem;
   }
   
   /* Cart icon styles */
-  .cart-icon {
+  .header__cart-icon {
     font-size: 1.5rem;
     color: var(--color-white);
+    width: 80px;
+    height: 80px;
     margin-right: 0.5rem;
-  }
-  
-  /* Cart count styles */
-  .cart-count {
-    background-color: var(--color-warning);
-    color: var(--color-white);
-    padding: 4px 8px;
-    border-radius: 50%;
   }
