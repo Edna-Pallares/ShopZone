@@ -1,0 +1,32 @@
+/*Categories containers*/
+.categories-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/*Bubble*/
+.category-bubble {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  text-align: center;
+}
+
+/*Category text*/
+.category-link {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

@@ -1,0 +1,165 @@
+.addproducts__container {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  position: static;
+  z-index: -1;
+}
+
+.animate {
+  animation: fade-out 0.2s;
+}
+
+.side-panel {
+  height: 50%;
+  background-color: var(--softer-color);
+  padding: 0 1rem;
+}
+
+.left-side {
+  flex: 1;
+  padding: 1rem;
+  background-color: #f8f8f8;
+}
+
+.right-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-side-header {
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.right-side-footer {
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.right-side-body {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.total-items {
+  background-color: rgb(145, 14, 168);
+  color: var(--color-white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.footer-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.bar {
+  height: 1px;
+  background-color: var(--softer-color);
+}
+
+.check-out {
+  text-align: center;
+}
+
+.check-out-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background-color: rgb(145, 14, 168);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.check-out-btn:hover {
+  background-color: rgb(145, 14, 168);
+}
+
+.check-out-container {
+  display: none;
+}
+
+.check-out-print {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-white);
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.check-out-title {
+  margin-bottom: 4rem;
+}
+
+table {
+  border: 1px solid;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table tr,
+th,
+td {
+  border: 1px solid black;
+  padding: 0.3rem;
+}
+
+table td {
+  color: var(--soft-color);
+}
+
+table tr .table-item-title {
+  width: 20rem;
+}
+
+.total {
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .addproducts__container {
+    flex-direction: column;
+  }
+  .left-side,
+  .right-side {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .right-side-footer,
+  .right-side-header {
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
