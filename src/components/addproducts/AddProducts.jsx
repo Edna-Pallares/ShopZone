@@ -9,7 +9,6 @@ const AddProducts = ({ items, click, removeItem, setAddedItem }) => {
       return pre + Number(cur.addNumber) * Number(cur.price);
     }, 0)
     .toFixed(2);
-  // let curDate = new Date();
   const showDivRef = useRef(null);
 
   return (
@@ -18,7 +17,6 @@ const AddProducts = ({ items, click, removeItem, setAddedItem }) => {
         <div className="check-out-container">
           <div className="check-out-print">
             <h1 className="check-out-title">Checkout</h1>
-            {/* <p>{curDate}</p> */}
             <table>
               <thead>
                 <tr>
@@ -86,14 +84,7 @@ const AddProducts = ({ items, click, removeItem, setAddedItem }) => {
             <h1>${total}</h1>
           </div>
           <div className="check-out">
-            <button
-              className="check-out-btn"
-              onClick={() => {
-                items.length >= 1 && print();
-              }}
-            >
-              Check Out
-            </button>
+            <button className="check-out-btn">Check Out</button>
           </div>
         </div>
       </div>

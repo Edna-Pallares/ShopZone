@@ -1,74 +1,74 @@
 /* Header container styles */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  /* Logo container styles */
-  header__logo-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Logo image styles */
-  .header__logo {
-    width: 4rem;
-    animation: rotate 7s linear infinite;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: -10px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
 
-  /* Title styles */
+/* Logo container styles */
+header__logo-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo image styles */
+.header__logo {
+  width: 4rem;
+  animation: rotate 7s linear infinite;
+}
+
+/* Title styles */
 .header__title {
-    margin-left: 0.5rem; /* Add spacing between logo and title */
+  margin-left: 0.5rem;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
   }
-  
-  @keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
   }
-  
-  /* Navigation styles */
-  .header__nav-list {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-  }
-  
-  .header__nav-item {
-    margin-right: 1rem;
-  }
-  
-  .header__nav-link {
-    color: var(--color-white);
-    text-decoration: none;
-  }
-  
-  .header__nav-link:hover {
-    text-decoration: underline;
-  }
- 
-  /* Cart container styles */
-  .header__cart-container {
-    display: flex;
-    align-items: center;
-    margin-right: 1rem;
-  }
-  
-  /* Cart icon styles */
-  .header__cart-icon {
-    font-size: 1.5rem;
-    color: var(--color-white);
-    width: 80px;
-    height: 80px;
-    margin-right: 0.5rem;
-  }
+}
+
+/* Navigation styles */
+.header__nav-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+.header__nav-item {
+  margin-right: 1rem;
+}
+
+.header__nav-link {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.header__nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Cart container styles */
+.header__cart-container {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+/* Cart icon styles */
+.header__cart-icon {
+  font-size: 1.5rem;
+  color: var(--color-white);
+  width: 80px;
+  height: 80px;
+  margin-right: 0.5rem;
+}

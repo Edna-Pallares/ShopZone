@@ -24,7 +24,7 @@ const Login = ({ setUser, setToken }) => {
         localStorage.setItem("token", data.token);
         setEmail(email);
         setToken(data.token);
-        navigate("/dashboard"); 
+        navigate("/dashboard");
       } else {
         setError("Invalid email or password. Please try again.");
       }
@@ -60,9 +60,7 @@ const Login = ({ setUser, setToken }) => {
         </button>
       </form>
       <p>Forgot password?</p>
-      <button onClick={() => navigate("/Password")}>
-        Reset password
-      </button>
+      <button onClick={() => navigate("/Password")}>Reset password</button>
       <p>Don't have an account yet?</p>
       <button onClick={() => navigate("/Register")}>Sign Up</button>
     </div>

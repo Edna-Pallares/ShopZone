@@ -9,9 +9,11 @@ import Search from "./components/search/Search";
 import AddProducts from "./components/addproducts/AddProducts";
 import Button from "./components/buttonStyle/Button";
 import CardBody from "./components/cards/CardBody";
+import Categories from "./components/categories/Categories";
 import SingleProduct from "./components/singleproduct/SingleProduct";
 import SingleCategory from "./components/singlecategory/SingleCategory";
 import Footer from "./components/footer/Footer";
+import { filterByCategory, filterByPrice } from "./components/filter/Filter";
 
 const App = () => {
   const [items, setItem] = useState([]);
@@ -28,6 +30,14 @@ const App = () => {
 
   const changingSearchData = (e) => {
     setSearchValue(e.target.value);
+  };
+
+  const handleFilter = () => {
+    const filteredItems = filterByCategory(
+      filterByPrice(items, 0, 100),
+      "electronics"
+    );
+    setItems(filteredItems);
   };
 
   const addItem = (item) => {
@@ -55,6 +65,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/password" element={<Password />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/singleproduct" element={<SingleProduct />} />
           <Route path="/singlecategory" element={<SingleCategory />} />
           <Route
@@ -65,10 +76,13 @@ const App = () => {
                   <div className="nav">
                     <div className="nav-right">
                       <Search
-                        products={items}
                         value={searchValue}
                         onChangeData={changingSearchData}
+                        onFilter={handleFilter}
                       />
+                      <button className="filter-button" onClick={handleFilter}>
+                        Filter
+                      </button>
                       <Button
                         num={addedItems.length}
                         click={setShowAddProducts}

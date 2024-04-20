@@ -1,18 +1,26 @@
 .ui-change-btn {
-    width: fit-content;
-    padding: 1rem 2rem;
-    display: block;
-    font-size: 1rem;
-    background-color: var(--color-white);
-    border: 2px solid var(--color-primary);
-    border-radius: 0.5rem;
-    cursor: pointer;
+  background-color: rgb(145, 14, 168);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 150px;
+}
+
+.ui-change-btn span {
+  margin-left: 5px;
+}
+
+.ui-change-btn:hover {
+  background-color: var(--soft-color);
+}
+
+@media screen and (max-width: 600px) {
+  .ui-change-btn {
+    width: 100px;
   }
-  .ui-change-btn span {
-    background-color: #cc1996;
-    display: inline-block;
-    padding: 0.4rem;
-    margin: 0 0.5rem;
-    border-radius: 0.5rem;
-    color: var(--color-white);
-  }
+}

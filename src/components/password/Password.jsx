@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Password.css"
+import "./Password.css";
 
 export default function Password() {
   const [email, setEmail] = useState("");
@@ -17,12 +17,14 @@ export default function Password() {
   };
 
   const handleNavigateHome = () => {
-    navigate("/"); 
+    navigate("/");
   };
 
   return (
     <>
-      <h3>Enter your email and we will send you an email to reset your password.</h3>
+      <h3>
+        Enter your email and we will send you an email to reset your password.
+      </h3>
       {submitted ? (
         <>
           <p>Email sent!</p>
@@ -31,7 +33,7 @@ export default function Password() {
       ) : (
         <form className="form" onSubmit={handleSubmit}>
           <label htmlFor="email" className="email">
-            Email: 
+            Email:
             <input
               type="email"
               value={email}

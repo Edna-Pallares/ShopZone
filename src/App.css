@@ -1,5 +1,5 @@
 :root {
-  --soft-color: rgba(66, 15, 113, 0.774);
+  --soft-color: rgba(173, 97, 243, 0.869);
   --softer-color: rgba(0, 0, 0, 0.2);
   --color-primary: rgb(145, 14, 168);
   --color-waring: #d49cf1;
@@ -47,7 +47,7 @@ body {
 
 .search__input:focus {
   outline: none;
-  border-color: var(--color-primary); /* Match focused state to border color */
+  border-color: var(--color-primary); 
 }
 
 @media screen and (max-width: 1040px) {
