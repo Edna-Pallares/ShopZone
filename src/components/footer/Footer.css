@@ -8,3 +8,17 @@
   left: 0;
   width: 100%;
 }
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-container{
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #1e1e3f;
+  width: 145px;
+  float: right;
+}

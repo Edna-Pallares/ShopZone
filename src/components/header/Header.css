@@ -45,10 +45,17 @@ header__logo-container {
 }
 
 .header__nav-item {
-  margin-right: 1rem;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #1e1e3f;
+  width: 145px;
 }
 
 .header__nav-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: var(--color-white);
   text-decoration: none;
 }
@@ -57,18 +64,4 @@ header__logo-container {
   text-decoration: underline;
 }
 
-/* Cart container styles */
-.header__cart-container {
-  display: flex;
-  align-items: center;
-  margin-right: 1rem;
-}
 
-/* Cart icon styles */
-.header__cart-icon {
-  font-size: 1.5rem;
-  color: var(--color-white);
-  width: 80px;
-  height: 80px;
-  margin-right: 0.5rem;
-}

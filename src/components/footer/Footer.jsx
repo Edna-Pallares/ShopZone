@@ -4,7 +4,9 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>&copy; {new Date().getFullYear()} Shop Zone</p>
+      <div>
+        <p>&copy; {new Date().getFullYear()} Shop Zone</p>
+      </div>
     </footer>
   );
 };
