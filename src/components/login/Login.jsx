@@ -1,11 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"
+import "./Login.css";
 
-const API_URL = "https://fakestoreapi.com/auth/login";
-
-const Login = ({ hangleLogin }) => {
+const Login = ({ setToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -13,16 +11,17 @@ const Login = ({ hangleLogin }) => {
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
+
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch("https://fakestoreapi.com/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password}),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        hangleLogin(data.token);
+        set(data.token);
         localStorage.setItem("token", data.token);
         navigate("/");
       } else {
@@ -49,7 +48,6 @@ const Login = ({ hangleLogin }) => {
               }}
             />
           </label>
-          <br />
           <label>
             Password:
             <input
@@ -60,17 +58,10 @@ const Login = ({ hangleLogin }) => {
               }}
             />
           </label>
-          <br />
           {error && <p className="error-message">{error}</p>}
-          <br />
           <button type="submit">Login</button>
-          <br />
-          <button onClick={() => navigate("/password")}>
-            Reset Password
-          </button>
-          <button onClick={() => navigate("/register")}>
-            Create Account
-          </button>
+          <button onClick={() => navigate("/password")}>Reset Password</button>
+          <button onClick={() => navigate("/register")}>Create Account</button>
         </form>
       </div>
     </>

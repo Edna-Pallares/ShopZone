@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Account from "./components/account/Account";
 import Login from "./components/login/Login";
@@ -21,7 +21,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
   const [addedItems, setAddedItem] = useState([]);
   const [showAddProducts, setShowAddProducts] = useState(false);
-  const [token, setToken] = React.useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -29,10 +29,15 @@ const App = () => {
       .then((res) => res.json())
       .then((data) => setItem(data))
       .catch((error) => console.error("Error fetching data:", error));
+
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
   }, []);
 
-  const changingSearchData = (e) => {
-    setSearchValue(e.target.value);
+  const changingSearchData = (ev) => {
+    setSearchValue(ev.target.value);
   };
 
   const handleFilter = () => {
@@ -60,29 +65,27 @@ const App = () => {
     item.title.toLowerCase().includes(searchValue.toLowerCase())
   );
 
-  const handleLogin = (token) => {
-    setIsLoggedIn(true); // Set isLoggedIn to true upon successful login
-    localStorage.setItem("token", token); // Store token in localStorage
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("token");
-  };
-
   return (
     <div>
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/login" element={<Login token={token} setToken={setToken} />} />
-          <Route path="/account" element={<Account token={token} />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login setToken={setToken} />} />
+          <Route
+            path="/account"
+            element={token ? <Account /> : <Navigate to="/login" />}
+          />
+          <Route path="/register" element={<Register setToken={setToken} />} />
           <Route path="/password" element={<Password />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/singleproduct" element={<SingleProduct />} />
-          <Route path="/categories/:categoryName" element={<SingleCategory />} />
-          <Route path="/" element={
+          <Route
+            path="/categories/:categoryName"
+            element={<SingleCategory />}
+          />
+          <Route
+            path="/"
+            element={
               <React.Fragment>
                 <div className="body__container">
                   <div className="nav">

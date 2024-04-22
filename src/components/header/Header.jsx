@@ -4,12 +4,11 @@ import LoGo from '../../assets/logo.png';
 import "./Header.css"
 
 const Header = () => {
-  // State to track login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Function to handle logout
   const handleLogout = () => {
-    // Perform logout actions here (e.g., clear token, update state)
+    
     setIsLoggedIn(false);
     localStorage.removeItem('token'); // Assuming token is stored in localStorage
   };
