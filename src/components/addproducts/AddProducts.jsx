@@ -83,7 +83,7 @@ const AddProducts = ({ items, click, removeItem, setAddedItem }) => {
             <h4>Total :</h4>
             <h1>${total}</h1>
           </div>
-          <div className="check-out">
+          <div>
             <button className="check-out-btn">Check Out</button>
           </div>
         </div>

@@ -12,7 +12,7 @@
   padding: 20px;
   border-radius: 8px;
   border: 2px solid var(--color-primary);
-  background-color: #1e1e3f;
+  background-color: var(--color-primary);
   width: 300px;
 }
 
@@ -37,6 +37,7 @@ form {
 
 label {
   margin-bottom: 10px;
+  color: var(--color-primary);
 }
 
 input {
@@ -58,6 +59,7 @@ input {
   color: #1e1e3f;
   width: 100%;
 }
+
 button {
   padding: 10px 15px;
   margin-top: 20px;
@@ -76,6 +78,7 @@ button:disabled {
 
 .error-message {
   margin-top: 10px;
+  color: var(--color-primary);
 }
 
 h3 {
@@ -87,4 +90,9 @@ p {
   font-size: 14px;
 }
 
-
+h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 35px;
+  color: var(--color-primary);
+}

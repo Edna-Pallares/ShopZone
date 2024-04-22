@@ -1,11 +1,11 @@
-.register-container {
+.register-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #1e1e3f; 
-    color: #ff00ff; 
+    color: var(--color-primary); 
   }
   
   .form-container {
@@ -24,7 +24,7 @@
   form {
   padding: 20px;
   border-radius: 8px;
-  border: 2px solid #ff00ff;
+  border: 2px solid var(--color-primary);
   background-color: #1e1e3f;
   width: 200px;
   }

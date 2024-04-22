@@ -22,16 +22,16 @@ const Password = ({ setUser, setToken }) => {
 
   return (
     <>
-      <h3>
-        Enter your email and we will send you an email to reset your password.
-      </h3>
       {submitted ? (
         <>
-          <p>Email sent!</p>
+          <p className="email-sent">Email sent!</p>
           <button onClick={handleNavigateHome}>Go to Home</button>
         </>
       ) : (
         <form className="form" onSubmit={handleSubmit}>
+      <h3>
+        Enter your email address and you'll get an email to reset your password.
+      </h3>
           <label htmlFor="email" className="email">
             Email:
             <input

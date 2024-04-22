@@ -11,8 +11,8 @@ const Login = ({ hangleLogin }) => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
     try {
       const response = await fetch(API_URL, {
         method: "POST",
@@ -44,8 +44,8 @@ const Login = ({ hangleLogin }) => {
             <input
               type="email"
               value={email}
-              onChange={(event) => {
-                setEmail(event.target.value);
+              onChange={(ev) => {
+                setEmail(ev.target.value);
               }}
             />
           </label>
@@ -55,8 +55,8 @@ const Login = ({ hangleLogin }) => {
             <input
               type="password"
               value={password}
-              onChange={(event) => {
-                setPassword(event.target.value);
+              onChange={(ev) => {
+                setPassword(ev.target.value);
               }}
             />
           </label>
@@ -65,9 +65,12 @@ const Login = ({ hangleLogin }) => {
           <br />
           <button type="submit">Login</button>
           <br />
-          <p>
-            Don't Have an Account Yet? <a href="/register">Create Account</a>
-          </p>
+          <button onClick={() => navigate("/password")}>
+            Reset Password
+          </button>
+          <button onClick={() => navigate("/register")}>
+            Create Account
+          </button>
         </form>
       </div>
     </>

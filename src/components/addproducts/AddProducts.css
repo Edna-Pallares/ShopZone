@@ -3,17 +3,11 @@
   display: flex;
   overflow: hidden;
   position: static;
-  z-index: -1;
+  z-index: 1;
 }
 
 .animate {
   animation: fade-out 0.2s;
-}
-
-.side-panel {
-  height: 50%;
-  background-color: var(--softer-color);
-  padding: 0 1rem;
 }
 
 .left-side {
@@ -68,10 +62,6 @@ h1{
   background-color: var(--softer-color);
 }
 
-.check-out {
-  text-align: center;
-}
-
 .check-out-btn {
   width: 100%;
   padding: 1rem;
@@ -82,10 +72,13 @@ h1{
   border-radius: 0.5rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  z-index: 1;
 }
 
 .check-out-btn:hover {
   background-color: rgb(145, 14, 168);
+  box-shadow: 0px 0px 10px var(--softer-color);
+  transform: scale(1.01);
 }
 
 .check-out-container {
