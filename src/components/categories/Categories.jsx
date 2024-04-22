@@ -14,7 +14,7 @@ const Categories = () => {
         const data = await response.json();
         setCategories(data);
       } catch (error) {
-        console.log(error);
+        console.log("Error fetching categories:", error);
       }
     };
 

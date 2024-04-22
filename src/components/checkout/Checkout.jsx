@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
-import { API_URL } from "../App";
+import React from "react";
 
-export function Checkout({ token }) {
-    
-    
-}
+const Checkout = () => {
+  return (
+    <div>
+      <h2>Checkout</h2>
+      <p>Complete your purchase here.</p>
+    </div>
+  );
+};
+
+export default Checkout;
