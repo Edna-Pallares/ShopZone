@@ -1,9 +1,19 @@
-import React from "react";
-import LoGo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
-import "./Header.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import LoGo from '../../assets/logo.png';
+import "./Header.css"
 
 const Header = () => {
+  // State to track login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Function to handle logout
+  const handleLogout = () => {
+    // Perform logout actions here (e.g., clear token, update state)
+    setIsLoggedIn(false);
+    localStorage.removeItem('token'); // Assuming token is stored in localStorage
+  };
+
   return (
     <header className="header">
       <div className="header__logo-container">
@@ -20,20 +30,37 @@ const Header = () => {
             </Link>
           </li>
           <li className="header__nav-item">
-            <Link to="/Categories" className="header__nav-link">
+            <Link to="/categories" className="header__nav-link">
               Categories
             </Link>
           </li>
-          <li className="header__nav-item">
-            <Link to="/login" className="header__nav-link">
-              Login
-            </Link>
-          </li>
-          <li className="header__nav-item">
-            <Link to="/register" className="header__nav-link">
-              Create Account
-            </Link>
-          </li>
+          {isLoggedIn ? (
+            <>
+              <li className="header__nav-item">
+                <Link to="/account" className="header__nav-link">
+                  Account
+                </Link>
+              </li>
+              <li className="header__nav-item">
+                <button onClick={handleLogout} className="header__nav-link">
+                  Logout
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="header__nav-item">
+                <Link to="/login" className="header__nav-link">
+                  Login
+                </Link>
+              </li>
+              <li className="header__nav-item">
+                <Link to="/register" className="header__nav-link">
+                  Create Account
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </header>

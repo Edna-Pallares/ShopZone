@@ -22,6 +22,7 @@ const App = () => {
   const [addedItems, setAddedItem] = useState([]);
   const [showAddProducts, setShowAddProducts] = useState(false);
   const [token, setToken] = React.useState(localStorage.getItem("token"));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/")
@@ -59,9 +60,14 @@ const App = () => {
     item.title.toLowerCase().includes(searchValue.toLowerCase())
   );
 
+  const handleLogin = (token) => {
+    setIsLoggedIn(true); // Set isLoggedIn to true upon successful login
+    localStorage.setItem("token", token); // Store token in localStorage
+  };
+
   const handleLogout = () => {
+    setIsLoggedIn(false);
     localStorage.removeItem("token");
-    setToken(null);
   };
 
   return (
@@ -75,10 +81,8 @@ const App = () => {
           <Route path="/password" element={<Password />} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/singleproduct" element={<SingleProduct />} />
-          <Route path="/singlecategory" element={<SingleCategory />} />
-          <Route
-            path="/"
-            element={
+          <Route path="/categories/:categoryName" element={<SingleCategory />} />
+          <Route path="/" element={
               <React.Fragment>
                 <div className="body__container">
                   <div className="nav">

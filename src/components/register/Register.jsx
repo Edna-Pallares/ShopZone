@@ -1,87 +1,96 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
+const API_URL = "https://fakestoreapi.com/users";
 
 const Register = ({ setToken }) => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [city, setCity] = useState("");
-  const [street, setStreet] = useState("");
-  const [zipcode, setZipcode] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [message, setMessage] = useState("");
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
     try {
-      const userData = {
-        email,
-        password,
-        name: { firstname: firstName, lastname: lastName },
-      }
-
-      const response = await fetch("https://fakestoreapi.com/users", {
+      const response = await fetch(API_URL, {
         method: "POST",
-        body: JSON.stringify(userData),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, lastName, email, password }),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to register");
-      }
+      console.log("Response:", response);
 
-      const { token } = await response.json();
-        localStorage.setItem("token", token);
-        setToken(token);
-        navigate("/account");
-    }catch (error) {
-      console.error("Registration failed:", error);
-      setError("Registration failed, please try again.");
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Registration Successful:", data);
+        localStorage.setItem("token", data.token);
+        setMessage(data.message);
+        setToken(data.token);
+        navigate("/login");
+      } else {
+        const result = await response.json();
+        setError(result.error || "Registration failed");
+        console.error("Registration failed:", result);
+      }
+    } catch (error) {
+      setError("Something went wrong. Please try again.");
+      console.error("Error during registration:", error);
     }
   };
 
   return (
-        <div className="register-container">
-          <h1>Create Account</h1>
-          {error && <p className="error-message">{error}</p>}
-          <form className="form" onSubmit={handleRegister}>
-            <label htmlFor="firstName">First Name:</label>
-              <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            <label htmlFor="lastName">Last Name:</label>
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            <label htmlFor="email">Email:</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(ev) => setPassword(ev.target.value)}
-              />
-            <button type="submit">
-              Create Account
-            </button>
-          </form>
-          <p>Have an Account?<a href="/login">Login</a></p> 
-        </div>
+    <div className="register-form">
+      <h2>Create Account</h2>
+      {error && <p className="error">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <label>
+          First Name:
+          <input
+            type="text"
+            value={firstName}
+            onChange={(ev) => setFirstName(ev.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Last Name:
+          <input
+            type="text"
+            value={lastName}
+            onChange={(ev) => setLastName(ev.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(ev) => {
+              setEmail(ev.target.value);
+            }}
+          />
+        </label>
+        <br />
+
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+        <br />
+        <br />
+        <button type="submit">Sign Up</button>
+      </form>
+      {message && <p>{message}</p>}
+    </div>
   );
 };
 

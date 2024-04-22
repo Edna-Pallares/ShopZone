@@ -26,6 +26,10 @@ header__logo-container {
 /* Title styles */
 .header__title {
   margin-left: 0.5rem;
+  text-transform: uppercase;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: bold;
+  font-size: 40px;
 }
 
 @keyframes rotate {
