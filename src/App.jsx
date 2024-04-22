@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
+import Account from "./components/account/Account";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import Password from "./components/password/Password";
@@ -20,6 +21,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
   const [addedItems, setAddedItem] = useState([]);
   const [showAddProducts, setShowAddProducts] = useState(false);
+  const [token, setToken] = React.useState(localStorage.getItem("token"));
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/")
@@ -57,12 +59,18 @@ const App = () => {
     item.title.toLowerCase().includes(searchValue.toLowerCase())
   );
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setToken(null);
+  };
+
   return (
     <div>
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login token={token} setToken={setToken} />} />
+          <Route path="/account" element={<Account token={token} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/password" element={<Password />} />
           <Route path="/categories" element={<Categories />} />

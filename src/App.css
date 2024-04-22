@@ -4,7 +4,8 @@
   --color-primary: rgb(145, 14, 168);
   --color-waring: #d49cf1;
   --color-white: #fff;
-  --color-danger: #900d8e;
+  --color-danger: #7b197a;
+  --color-header: rgb(195, 77, 216);
 }
 
 body {

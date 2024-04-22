@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Password.css";
 
-export default function Password() {
+const Password = ({ setUser, setToken }) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
@@ -46,3 +46,5 @@ export default function Password() {
     </>
   );
 }
+
+export default Password

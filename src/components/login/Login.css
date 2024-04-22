@@ -5,13 +5,13 @@
   align-items: center;
   height: 100vh;
   background-color: #1e1e3f;
-  color: #ff00ff;
+  color: var(--color-primary);
 }
 
 .form-container {
   padding: 20px;
   border-radius: 8px;
-  border: 2px solid #ff00ff;
+  border: 2px solid var(--color-primary);
   background-color: #1e1e3f;
   width: 300px;
 }
@@ -19,6 +19,13 @@
 .login-container h1 {
   font-size: 24px;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: #1e1e3f;
+  color: var(--color-primary);
 }
 
 form {
@@ -41,13 +48,23 @@ input {
   width: 100%;
 }
 
+.create-acc{
+  padding: 10px 15px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: var(--color-primary);
+  color: #1e1e3f;
+  width: 100%;
+}
 button {
   padding: 10px 15px;
   margin-top: 20px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  background-color: #ff00ff;
+  background-color: var(--color-primary);
   color: #1e1e3f;
   width: 100%;
 }
@@ -61,7 +78,13 @@ button:disabled {
   margin-top: 10px;
 }
 
+h3 {
+  margin-top: 10px;
+}
+
 p {
   margin-top: 10px;
   font-size: 14px;
 }
+
+

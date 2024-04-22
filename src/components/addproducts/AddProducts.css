@@ -46,6 +46,9 @@
   overflow-y: auto;
 }
 
+h1{
+  font-size: 24px;
+}
 .total-items {
   background-color: rgb(145, 14, 168);
   color: var(--color-white);
