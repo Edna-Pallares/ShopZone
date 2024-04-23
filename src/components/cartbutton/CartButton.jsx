@@ -8,7 +8,7 @@ const CartButton = () => {
   return (
     <div className="cart-button">
       <Link to="/checkout">
-        My Cart ({cart.reduce((total, item) => total + item.quantity, 0)})
+        <button>My Cart ({cart.reduce((total, item) => total + item.quantity, 0)})</button>
       </Link>
     </div>
   );
