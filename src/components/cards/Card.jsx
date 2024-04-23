@@ -1,13 +1,22 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Card.css";
 
 const Card = ({ product, addItem, removeItem, addedItems }) => {
-  const [isAdded, setIsAdded] = useState(true);
-  const item = addedItems.filter((addedItem) => addedItem.id == product.id);
+  const [isAdded, setIsAdded] = useState(false);
+
   useEffect(() => {
-    item.length == 0 ? setIsAdded(true) : setIsAdded(false);
-  }, [item]);
+    const isProductAdded = addedItems.some((item) => item.id === product.id);
+    setIsAdded(isProductAdded);
+  }, [addedItems, product]);
+
+  const handleButtonClick = () => {
+    if (isAdded) {
+      removeItem(product);
+    } else {
+      addItem(product);
+    }
+    setIsAdded(!isAdded); 
+  };
 
   return (
     <div className="card">
@@ -21,13 +30,10 @@ const Card = ({ product, addItem, removeItem, addedItems }) => {
       <div className="card-price-add">
         <span>Price : ${product.price}</span>
         <button
-          className={isAdded ? "add-item-btn" : "remove-item-btn"}
-          onClick={() => {
-            isAdded ? addItem(product) : removeItem(product);
-            setIsAdded(!isAdded);
-          }}
+          className={isAdded ? "remove-item-btn" : "add-item-btn"}
+          onClick={handleButtonClick}
         >
-          {isAdded ? "ADD " : "REMOVE"}
+          {isAdded ? "REMOVE" : "ADD"}
         </button>
       </div>
     </div>

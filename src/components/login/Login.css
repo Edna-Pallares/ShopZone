@@ -8,7 +8,7 @@
   color: var(--color-primary);
 }
 
-.form-container {
+.login-form{
   padding: 20px;
   border-radius: 8px;
   border: 2px solid var(--color-primary);
@@ -16,23 +16,12 @@
   width: 300px;
 }
 
-.login-container h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 10vh;
-  background-color: #1e1e3f;
-  color: var(--color-primary);
-}
-
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid var(--color-primary);
+  background-color: var(--color-primary);
+  width: 200px;
 }
 
 label {
@@ -49,17 +38,6 @@ input {
   width: 100%;
 }
 
-.create-acc{
-  padding: 10px 15px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  background-color: var(--color-primary);
-  color: #1e1e3f;
-  width: 100%;
-}
-
 button {
   padding: 10px 15px;
   margin-top: 20px;
@@ -68,7 +46,7 @@ button {
   cursor: pointer;
   background-color: var(--color-primary);
   color: #1e1e3f;
-  width: 100%;
+  width: 50%;
 }
 
 button:disabled {
@@ -79,10 +57,6 @@ button:disabled {
 .error-message {
   margin-top: 10px;
   color: var(--color-primary);
-}
-
-h3 {
-  margin-top: 10px;
 }
 
 p {

@@ -14,7 +14,7 @@ const Login = ({ setToken }) => {
 
     try {
       const response = await fetch("https://fakestoreapi.com/auth/login", {
-        method: "POST",
+        method: "GET",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
@@ -34,10 +34,9 @@ const Login = ({ setToken }) => {
   };
 
   return (
-    <>
-      <div className="form-container">
+      <div className="login-container">
         <h2>Login</h2>
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <label>
             Email:
             <input
@@ -64,7 +63,6 @@ const Login = ({ setToken }) => {
           <button onClick={() => navigate("/register")}>Create Account</button>
         </form>
       </div>
-    </>
   );
 };
 

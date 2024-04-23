@@ -16,7 +16,7 @@ function reducer(state, action) {
       addNumber: state.addNumber - 1,
     };
   }
-}
+};
 
 const CardList = ({ item, removeItem, setAddedItem, itemsArr }) => {
   const [state, dispatch] = useReducer(reducer, item);
