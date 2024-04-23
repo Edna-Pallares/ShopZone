@@ -10,7 +10,7 @@ const Header = () => {
   const handleLogout = () => {
     
     setIsLoggedIn(false);
-    localStorage.removeItem('token'); // Assuming token is stored in localStorage
+    localStorage.removeItem('token');
   };
 
   return (

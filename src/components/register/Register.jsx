@@ -27,7 +27,6 @@ const Register = ({ setToken }) => {
         const result = await response.json();
         setMessage("Registered successfully. Please log in to your account");
         setToken(result.token);
-        navigate("/login");
       } else {
         const errorData = await response.json();
         setError("Registration failed: ${errorData.message}`");
@@ -39,12 +38,12 @@ const Register = ({ setToken }) => {
   };
 
   return (
-    <div className="register-form">
+    <div className="register-container">
       <h1>Create Account</h1>
       {error && <p className="error">{error}</p>}
       {message && <p>{message}</p>}
-      <form className="form" onSubmit={handleSubmit}>
-        <label className="firstname">
+      <form onSubmit={handleSubmit}>
+        <label>
           First Name:
           <input
             type="text"
@@ -53,7 +52,7 @@ const Register = ({ setToken }) => {
             required
           />
         </label>
-        <label className="lastname">
+        <label>
           Last Name:
           <input
             type="text"
@@ -62,7 +61,7 @@ const Register = ({ setToken }) => {
             required
           />
         </label>
-        <label className="email">
+        <label>
           Email address:
           <input
             type={"email"}
@@ -71,7 +70,7 @@ const Register = ({ setToken }) => {
             required
           />
         </label>
-        <label className="password">
+        <label>
           Password:
           <input
             type={"password"}

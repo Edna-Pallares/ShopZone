@@ -8,12 +8,14 @@ import Password from "./components/password/Password";
 import Header from "./components/header/Header";
 import Search from "./components/search/Search";
 import AddProducts from "./components/addproducts/AddProducts";
-import Button from "./components/buttonStyle/Button";
+import Button from "./components/cartbutton/CartButton";
 import CardBody from "./components/cards/CardBody";
 import Categories from "./components/categories/Categories";
 import SingleProduct from "./components/singleproduct/SingleProduct";
 import SingleCategory from "./components/singlecategory/SingleCategory";
 import Footer from "./components/footer/Footer";
+import Checkout from "./components/checkout/Checkout";
+import { CartProvider } from "./components/cart/CartContext";
 import { filterByCategory, filterByPrice } from "./components/filter/Filter";
 
 const App = () => {
@@ -50,8 +52,7 @@ const App = () => {
 
   const addItem = (item) => {
     item.addNumber = 1;
-    const updatedItems = [...addedItems, item];
-    setAddedItem(updatedItems);
+    setAddedItem([...updatedItems, item]);
   };
 
   const removeItem = (item) => {
@@ -69,62 +70,71 @@ const App = () => {
     <div>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/login" element={<Login setToken={setToken} />} />
-          <Route
-            path="/account"
-            element={token ? <Account /> : <Navigate to="/login" />}
-          />
-          <Route path="/register" element={<Register setToken={setToken} />} />
-          <Route path="/password" element={<Password />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/singleproduct" element={<SingleProduct />} />
-          <Route
-            path="/categories/:categoryName"
-            element={<SingleCategory />}
-          />
-          <Route
-            path="/"
-            element={
-              <React.Fragment>
-                <div className="body__container">
-                  <div className="nav">
-                    <div className="nav-right">
-                      <Search
-                        value={searchValue}
-                        onChangeData={changingSearchData}
-                        onFilter={handleFilter}
-                      />
-                      <button className="filter-button" onClick={handleFilter}>
-                        Filter
-                      </button>
-                      <Button
-                        num={addedItems.length}
-                        click={setShowAddProducts}
-                      />
+        <CartProvider>
+          <Routes>
+            <Route path="/login" element={<Login setToken={setToken} />} />
+            <Route
+              path="/account"
+              element={token ? <Account /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/register"
+              element={<Register setToken={setToken} />}
+            />
+            <Route path="/password" element={<Password />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/singleproduct" element={<SingleProduct />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route
+              path="/categories/:categoryName"
+              element={<SingleCategory />}
+            />
+            <Route
+              path="/"
+              element={
+                <React.Fragment>
+                  <div className="body__container">
+                    <div className="nav">
+                      <div className="nav-right">
+                        <Search
+                          value={searchValue}
+                          onChangeData={changingSearchData}
+                          onFilter={handleFilter}
+                        />
+                        <button
+                          className="filter-button"
+                          onClick={handleFilter}
+                        >
+                          Filter
+                        </button>
+                        <Button
+                          num={addedItems.length}
+                          click={setShowAddProducts}
+                        />
+                      </div>
                     </div>
-                  </div>
 
-                  {showAddProducts && (
-                    <AddProducts
-                      click={setShowAddProducts}
-                      items={addedItems}
+                    {showAddProducts && (
+                      <AddProducts
+                        click={setShowAddProducts}
+                        items={addedItems}
+                        removeItem={removeItem}
+                        setAddedItem={setAddedItem}
+                      />
+                    )}
+                    <CardBody
+                      products={itemsFilter}
+                      addItem={addItem}
                       removeItem={removeItem}
-                      setAddedItem={setAddedItem}
+                      addedItems={addedItems}
                     />
-                  )}
-                  <CardBody
-                    products={itemsFilter}
-                    addItem={addItem}
-                    removeItem={removeItem}
-                    addedItems={addedItems}
-                  />
-                </div>
-                <Footer />
-              </React.Fragment>
-            }
-          />
-        </Routes>
+                  </div>
+                  <Footer />
+                </React.Fragment>
+              }
+            />
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
     </div>
   );
