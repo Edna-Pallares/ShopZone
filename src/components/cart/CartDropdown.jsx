@@ -8,7 +8,7 @@ const CartDropdown = () => {
   return (
     <div className="cart-dropdown">
       {cart.length === 0 ? (
-        <p>Your cart is empty</p>
+        <p className="nav2">Your cart is empty</p>
       ) : (
         <ul>
           {cart.map((item) => (
@@ -18,7 +18,7 @@ const CartDropdown = () => {
           ))}
         </ul>
       )}
-      <Link to="/checkout">Proceed to Checkout</Link>
+      <Link to="/checkout"><p className="nav2">Proceed to Checkout</p></Link>
     </div>
   );
 };

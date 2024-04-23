@@ -34,35 +34,35 @@ const Login = ({ setToken }) => {
   };
 
   return (
-      <div className="login-container">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email:
-            <input
-              type="email"
-              value={email}
-              onChange={(ev) => {
-                setEmail(ev.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Password:
-            <input
-              type="password"
-              value={password}
-              onChange={(ev) => {
-                setPassword(ev.target.value);
-              }}
-            />
-          </label>
-          {error && <p className="error-message">{error}</p>}
-          <button type="submit">Login</button>
-          <button onClick={() => navigate("/password")}>Reset Password</button>
-          <button onClick={() => navigate("/register")}>Create Account</button>
-        </form>
-      </div>
+    <div className="login-container">
+      <h2>Login</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email:
+          <input
+            type="email"
+            value={email}
+            onChange={(ev) => {
+              setEmail(ev.target.value);
+            }}
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(ev) => {
+              setPassword(ev.target.value);
+            }}
+          />
+        </label>
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit">Login</button>
+        <button onClick={() => navigate("/password")}>Reset Password</button>
+        <button onClick={() => navigate("/register")}>Create Account</button>
+      </form>
+    </div>
   );
 };
 

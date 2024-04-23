@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useCart } from "../cart/CartContext";
 import "./Card.css";
 
-const Card = ({ product, addItem, removeItem, addedItems }) => {
-  const [isAdded, setIsAdded] = useState(false);
-
-  useEffect(() => {
-    const isProductAdded = addedItems.some((item) => item.id === product.id);
-    setIsAdded(isProductAdded);
-  }, [addedItems, product]);
+const Card = ({ product }) => {
+  const { cart, addToCart, removeFromCart } = useCart();
+  const isAdded = cart.some((item) => item.id === product.id);
 
   const handleButtonClick = () => {
     if (isAdded) {
-      removeItem(product);
+      removeFromCart(product);
     } else {
-      addItem(product);
+      addToCart(product);
     }
-    setIsAdded(!isAdded); 
   };
 
   return (
@@ -26,14 +22,9 @@ const Card = ({ product, addItem, removeItem, addedItems }) => {
       <div>
         <h4>{product.title}</h4>
         <p>{product.description}</p>
-      </div>
-      <div className="card-price-add">
-        <span>Price : ${product.price}</span>
-        <button
-          className={isAdded ? "remove-item-btn" : "add-item-btn"}
-          onClick={handleButtonClick}
-        >
-          {isAdded ? "REMOVE" : "ADD"}
+        <p>Price: ${product.price}</p>
+        <button onClick={handleButtonClick}>
+          {isAdded ? "Remove from Cart" : "Add to Cart"}
         </button>
       </div>
     </div>

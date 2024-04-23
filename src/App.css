@@ -32,6 +32,19 @@ body {
   z-index: 100;
 }
 
+.nav2{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  top: 0;
+  background-color: rgb(154, 120, 185);
+  z-index: 100;
+  text-align: center;
+}
+
 .nav-right {
   display: flex;
   align-items: center;

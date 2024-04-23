@@ -9,7 +9,6 @@ import Header from "./components/header/Header";
 import Search from "./components/search/Search";
 import AddProducts from "./components/addproducts/AddProducts";
 import Button from "./components/cartbutton/CartButton";
-import CardList from "./components/addproducts/CardList";
 import CardBody from "./components/cards/CardBody";
 import Categories from "./components/categories/Categories";
 import SingleProduct from "./components/singleproduct/SingleProduct";
@@ -86,7 +85,6 @@ const App = () => {
             <Route path="/categories" element={<Categories />} />
             <Route path="/singleproduct" element={<SingleProduct />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/cardlist" element={<CardList />} />
             <Route
               path="/categories/:categoryName"
               element={<SingleCategory />}

@@ -9,3 +9,4 @@ const SingleProduct = () => {
 };
 
 export default SingleProduct;
+/*IN PROGRESS*/

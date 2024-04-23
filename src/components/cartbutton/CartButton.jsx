@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import CartDropdown from "../cart/CartDropdown"; // Adjusted import path
+import React from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "../cart/CartContext";
 
-const CartButton = ({ num }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+const CartButton = () => {
+  const { cart } = useCart();
 
   return (
     <div className="cart-button">
-      <button className="ui-change-btn" onClick={toggleDropdown}>
-        My Cart ({num})
-      </button>
-      {isDropdownOpen && <CartDropdown />}
+      <Link to="/checkout">
+        My Cart ({cart.reduce((total, item) => total + item.quantity, 0)})
+      </Link>
     </div>
   );
 };

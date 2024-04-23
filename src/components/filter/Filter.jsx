@@ -9,3 +9,4 @@ export const filterByPrice = (items, minPrice, maxPrice) => {
     (item) => item.price >= minPrice && item.price <= maxPrice
   );
 };
+/*IN PROGRESS*/

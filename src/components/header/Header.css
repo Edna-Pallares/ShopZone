@@ -30,8 +30,22 @@ header__logo-container {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: bold;
   font-size: 40px;
+  color: rgb(46, 11, 63);
+  animation-name: rotateAnimation;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: 2s;
+  animation-direction: normal;
 }
 
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes rotate {
   from {
     transform: rotate(0deg);

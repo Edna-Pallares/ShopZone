@@ -1,20 +1,25 @@
-// Checkout.jsx
 import React from "react";
-import { useParams } from "react-router-dom";
 import { useCart } from "../cart/CartContext";
+import "./Checkout.css";
 
 const Checkout = () => {
   const { cart } = useCart();
-  const { cartId } = useParams();
 
   return (
     <div>
-      <h1>MY CART</h1>
-      <h2>Items{cartId}</h2>
+      <h1>ADDED TO CART</h1>
       <ul>
         {cart.map((item) => (
-          <li key={item.id}>
-            {item.title} - ${item.price}
+          <li key={item.id} className="checkout-item">
+            <img src={item.image} alt={item.title} className="checkout-image" />
+            <div>
+              <p>
+                <strong>{item.title}</strong>
+              </p>
+              <p>
+                Price: ${item.price} x {item.quantity}
+              </p>
+            </div>
           </li>
         ))}
       </ul>
